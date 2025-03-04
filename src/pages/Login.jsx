@@ -20,7 +20,7 @@ export default function Login() {
       password,
     }).then((res) => {
       if (res?.ok) {
-        console.log(res);
+
         setCookies("AUTH_TOKEN", res.data.token);
         dispatch(login(res.data));
         navigate("/");

@@ -38,3 +38,16 @@ export const login = async (body) => {
 
   return await response.json();
 };
+
+export const logout = async (body) => {
+  const response = await fetch(`${url}/logout`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${body}`,
+    },
+    body: JSON.stringify(body),
+  });
+  return await response.json();
+};
