@@ -30,7 +30,6 @@ export default function NavBar() {
         toast.success(response?.message);
         removeCookie("AUTH_TOKEN");
         dispatch(logout(cookies.AUTH_TOKEN));
-        navigate("/login");
       } else {
         toast.error(response?.message);
       }
@@ -47,9 +46,13 @@ export default function NavBar() {
         <Button sx={{ color: "#2f3a8f", fontSize: "16px" }}>Home</Button>
       </Link>
 
-      <Button sx={{ color: "#2f3a8f", fontSize: "16px" }}>Projects</Button>
+      <Link to="/projects">
+        <Button sx={{ color: "#2f3a8f", fontSize: "16px" }}>Projects</Button>
+      </Link>
       <Button sx={{ color: "#2f3a8f", fontSize: "16px" }}>Contact Us</Button>
-      <Button sx={{ color: "#2f3a8f", fontSize: "16px" }}>Tools</Button>
+      {cookies.AUTH_TOKEN && (
+        <Button sx={{ color: "#2f3a8f", fontSize: "16px" }}>Tools</Button>
+      )}
       <Button
         variant="outlined"
         color={cookies.AUTH_TOKEN ? "error" : "primary"}
@@ -60,10 +63,8 @@ export default function NavBar() {
         }}
         onClick={() => {
           if (cookies.AUTH_TOKEN) {
-            // If user is logged in, perform logout
             onSubmit();
           } else {
-            // If no user is logged in, navigate to login page
             navigate("/login");
           }
         }}
