@@ -19,7 +19,6 @@ export const IndexProjects = async (token) => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
   return await response.json();
