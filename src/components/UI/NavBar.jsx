@@ -15,6 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { logout } from "../../redux/authSlice";
 import { logout as logoutAPI } from "../../api/auth";
 import { toast } from "react-toastify";
+import ContactUs from "../Dialog/ContactUs";
 
 export default function NavBar() {
   const [cookies, setCookie, removeCookie] = useCookies(["AUTH_TOKEN"]);
@@ -49,7 +50,12 @@ export default function NavBar() {
       <Link to="/projects">
         <Button sx={{ color: "#2f3a8f", fontSize: "16px" }}>Projects</Button>
       </Link>
-      <Button sx={{ color: "#2f3a8f", fontSize: "16px" }}>Contact Us</Button>
+      <Button
+        sx={{ color: "#2f3a8f", fontSize: "16px" }}
+        onClick={() => setOpenContact(true)}
+      >
+        Contact Us
+      </Button>
       {cookies.AUTH_TOKEN && (
         <Button sx={{ color: "#2f3a8f", fontSize: "16px" }}>Tools</Button>
       )}
@@ -73,6 +79,8 @@ export default function NavBar() {
       </Button>
     </>
   );
+
+  const [openContact, setOpenContact] = useState(false);
   return (
     <>
       <AppBar
@@ -125,6 +133,8 @@ export default function NavBar() {
           {navButtons}
         </Box>
       </Drawer>
+
+      <ContactUs openContact={openContact} setOpenContact={setOpenContact} />
     </>
   );
 }
