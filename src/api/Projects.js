@@ -49,20 +49,26 @@ export const destroy = async (token, id) => {
 };
 
 export const filteredProjects = async (token, filters) => {
-  try {
-    const params = new URLSearchParams(filters).toString();
-    const response = await fetch(`${url}/projects/filter`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(filters),
-    });
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching filtered projects:", error);
-    return { ok: false, data: [] };
-  }
+  const params = new URLSearchParams(filters).toString();
+  const response = await fetch(`${url}/projects/filter`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(filters),
+  });
+  return await response.json();
+};
+
+export const recents = async () => {
+  const response = await fetch(`${url}/projects/recents`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
+  return await response.json();
 };
