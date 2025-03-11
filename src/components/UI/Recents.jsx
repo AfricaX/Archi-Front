@@ -5,18 +5,18 @@ import { recents } from "../../api/Projects";
 export default function Recents() {
   const [recentProjects, setRecentProjects] = useState([]);
 
-  useEffect(() => {
-    const retrieveRecents = async () => {
-      try {
-        const response = await recents();
-        if (response?.ok) {
-          setRecentProjects(response.data);
-        }
-      } catch (error) {
-        console.error("Error fetching recent projects:", error);
+  const retrieveRecents = async () => {
+    try {
+      const response = await recents();
+      if (response?.ok) {
+        setRecentProjects(response.data);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching recent projects:", error);
+    }
+  };
 
+  useEffect(() => {
     retrieveRecents();
   }, []);
 
@@ -29,7 +29,7 @@ export default function Recents() {
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)", // 5 cards per row
+          gridTemplateColumns: "repeat(5, 1fr)", 
           gap: 2,
           justifyContent: "center",
           alignItems: "stretch",

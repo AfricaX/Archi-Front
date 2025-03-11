@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import Projects from "./pages/Projects";
 import NavBar from "./components/UI/NavBar";
+import Tools from "./pages/Tools";
 
 function App() {
   const router = createBrowserRouter([
@@ -25,6 +26,10 @@ function App() {
     {
       path: "/projects",
       element: <Projects />,
+    },
+    {
+      path: "/tools",
+      element: <Tools />,
     },
   ]);
 

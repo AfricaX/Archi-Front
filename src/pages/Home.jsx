@@ -9,7 +9,6 @@ import Gutter from "../components/UI/Gutter";
 
 function Home() {
   const user = useSelector((state) => state.auth.user);
-
   return (
     <>
       {" "}

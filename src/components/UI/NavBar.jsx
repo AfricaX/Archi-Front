@@ -57,7 +57,9 @@ export default function NavBar() {
         Contact Us
       </Button>
       {cookies.AUTH_TOKEN && (
-        <Button sx={{ color: "#2f3a8f", fontSize: "16px" }}>Tools</Button>
+        <Link to="/tools">
+          <Button sx={{ color: "#2f3a8f", fontSize: "16px" }}>Tools</Button>
+        </Link>
       )}
       <Button
         variant="outlined"
